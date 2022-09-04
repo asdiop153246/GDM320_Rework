@@ -1,0 +1,84 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "PlayerControl",
+            "id": "a4383908-41d3-4ea4-8506-b06ae46d16a5",
+            "actions": [
+                {
+                    "name": "Onjump",
+                    "type": "Button",
+                    "id": "cbd8e50a-a723-487e-aa7a-c53773e16291",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d15c202f-2046-4966-ba27-d3b73a170bcd",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Onjump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Game Menu",
+            "id": "fe00b44e-4b3c-44d4-9854-23e95f89b778",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3354f381-cbaa-44ec-a548-b5ddaa2b70a5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ceaa725a-102d-47af-b021-a3728f726aa8",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "82fb84e3-4132-4847-990b-97c4cac2d927",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "982400c2-2f16-40be-991f-1d16bb7cd41e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
