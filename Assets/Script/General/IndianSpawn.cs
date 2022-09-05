@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class IndianSpawn : MonoBehaviour
 {
-    public GameObject Indian;
+    public GameObject Unit;
     void Start()
     {
         for (int i = 0; i < 6; i++)
         {
-            Instantiate(Indian, gameObject.transform.position,gameObject.transform.rotation);
+            Instantiate(Unit, gameObject.transform.position,gameObject.transform.rotation);
         }
     }
 
