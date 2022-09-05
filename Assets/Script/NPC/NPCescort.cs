@@ -5,12 +5,14 @@ using Pathfinding;
 
 public class NPCescort : MonoBehaviour
 {
-
     public AIPath aipath;
     
-
-    // Update is called once per frame
     void Update()
+    {
+        checkFlip();
+    }
+
+    private void checkFlip()
     {
         if (aipath.desiredVelocity.x >= 0.01f)
         {
