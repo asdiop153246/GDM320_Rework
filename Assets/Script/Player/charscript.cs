@@ -37,24 +37,31 @@ public class charscript : MonoBehaviour
         move = Input.GetAxis("Horizontal");
         transform.position += new Vector3(move * speed * Time.deltaTime, 0, 0);
         anim.SetFloat("Speed", Mathf.Abs(move));
+        onJump();
+    }
 
+    private void onJump()
+    {
         if (Input.GetButtonDown("Jump"))
         {
-            if ((Isplatform == true) && (Isgamestarted == true))
-            {
-                jump = true;
-                Isplatform = false;
-                audioSource.Play();
-
-            }
-            else
-            {
-                Isgamestarted = true; 
-                
-            }
+            checkPlatform();
             anim.SetBool("Platform", Isplatform);
         }
     }
+    private void checkPlatform()
+    {
+        if ((Isplatform == true) && (Isgamestarted == true))
+        {
+            jump = true;
+            Isplatform = false;
+            audioSource.Play();
+        }
+        else
+        {
+            Isgamestarted = true;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Isplatform = true;
@@ -62,16 +69,23 @@ public class charscript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
-            
-            
-        
+        IsJump();
+        IsFlip();
+        IsFire();
+    }
+
+    private void IsJump()
+    {
         if (jump == true)
         {
             rigidbody.AddForce(new Vector2(0f, jumpforce));
             jump = false;
         }
-        if ( move > 0 && !m_FacingRight)
+    }
+
+    private void IsFlip()
+    { 
+    if ( move > 0 && !m_FacingRight)
         {
             // ... flip the player.
             Flip();
@@ -82,14 +96,7 @@ public class charscript : MonoBehaviour
             // ... flip the player.
             Flip();
         }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            anim.SetTrigger("Attack");
-            
-        }
-            
     }
-
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
@@ -97,34 +104,49 @@ public class charscript : MonoBehaviour
 
         transform.Rotate(0f, 180f, 0f);
     }
+    private void IsFire()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("Attack");
+        }
+    }
     public void RunLeft()
     {
-        if (m_FacingRight == true)
-        {
-            Flip();
-        }
+        IsFacingRight();
         move = 5.0f;
         rigidbody.velocity = new Vector2(-move, rigidbody.velocity.x);
         anim.SetFloat("Speed", -Mathf.Abs(move));
     }
 
+    private void IsFacingRight()
+    {
+        if (m_FacingRight == true)
+        {
+            Flip();
+        }
+    }
     public void RunRight()
+    {
+        IsFacingLeft();
+        move = 5.0f;
+        rigidbody.velocity = new Vector2(move, rigidbody.velocity.x);
+        anim.SetFloat("Speed", Mathf.Abs(move));
+    }
+    private void IsFacingLeft()
     {
         if (m_FacingRight == false)
         {
             Flip();
         }
-        move = 5.0f;
-        rigidbody.velocity = new Vector2(move, rigidbody.velocity.x);
-        anim.SetFloat("Speed", Mathf.Abs(move));
     }
+
      public void StopMoving()
     {
         rigidbody.velocity = Vector2.zero;
     }
     public void Jump()
     {
-        
             rigidbody.AddForce(new Vector2(0f, jumpforce));              
     }
 }
