@@ -32,13 +32,13 @@ public class Restart : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListen
     }
     public void LoadAd()
     {
-        // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
+       
         Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
     public void ShowAd()
     {
-        // Note that if the ad content wasn't previously loaded, this method will fail
+        
         Debug.Log("Showing Ad: " + _adUnitId);
         Advertisement.Show(_adUnitId, this);
     }
