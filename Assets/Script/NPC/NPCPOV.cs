@@ -22,12 +22,20 @@ public class NPCPOV : MonoBehaviour
     IEnumerator Speech(TMP_Text speak)
     {
         speak.SetText("Jump over the waterfall");
-        Talk.gameObject.SetActive(true);
+        setActiveTalk(true);
 
         yield return new WaitForSeconds(3);
 
-        speak.gameObject.SetActive(false);
+        setActiveSpeak(false);
         setCameraToPlayer();
+    }
+    private void setActiveTalk(bool value)
+    {
+        Talk.gameObject.SetActive(value);
+    }
+    private void setActiveSpeak(bool value)
+    {
+        speak.gameObject.SetActive(value);
     }
     private void setCameraToNPC()
     {
