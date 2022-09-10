@@ -17,10 +17,12 @@ public class NPCescort : MonoBehaviour
         if (aipath.desiredVelocity.x >= 0.01f)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
+            return;
         }
-        else if (aipath.transform.localScale.x <= -0.1f)
+        if (aipath.transform.localScale.x <= -0.1f)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+            return;
         }
     }
     
