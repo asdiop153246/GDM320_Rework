@@ -53,7 +53,9 @@ public class AiIndian : MonoBehaviour
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
         Vector2 force = direction * moveSpeed * Time.deltaTime;
         rb.AddForce(force);
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
+        float distance = Vector2.Distance(
+            rb.position, 
+            path.vectorPath[currentWayPoint]);
 
         checkNextWayPoint(distance);
         checkFlip(force);
@@ -69,10 +71,7 @@ public class AiIndian : MonoBehaviour
             reachedEndOfPath = true;
             return;
         }
-        else
-        {
             reachedEndOfPath = false;
-        }
     }
 
 
@@ -88,10 +87,12 @@ public class AiIndian : MonoBehaviour
         if (force.x >= 0.01f)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            return;
         }
-        else if (force.x <= -0.01f)
+        if (force.x <= -0.01f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            return;
         }
     }
 }
