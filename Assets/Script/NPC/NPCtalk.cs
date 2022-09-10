@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class NPCtalk : MonoBehaviour
+public class NPCtalk : MonoBehaviour : setActiveDialog
 {
     public TMP_Text Talk;
     private void OnTriggerEnter2D(Collider2D collision)
