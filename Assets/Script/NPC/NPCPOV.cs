@@ -26,14 +26,14 @@ public class NPCPOV : MonoBehaviour
 
         yield return new WaitForSeconds(3);
 
-        setActiveSpeak(false);
+        setActiveSpeak(speak , false);
         setCameraToPlayer();
     }
     private void setActiveTalk(bool value)
     {
         Talk.gameObject.SetActive(value);
     }
-    private void setActiveSpeak(bool value)
+    private void setActiveSpeak(TMP_Text speak, bool value)
     {
         speak.gameObject.SetActive(value);
     }
