@@ -6,26 +6,27 @@ public class Weapon : MonoBehaviour
 {
     public Transform Firepoint;
     public GameObject Bird;
+    public bool Isfired = false;
     
     Animator anim;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            //anim.SetTrigger("Attack");
-            shoot();
+        if (Input.GetButtonDown("Fire1") && Isfired == false)
+        {          
+            shoot();                    
         }
     }
 
     void shoot()
-    {
-        
+    {        
         Instantiate(Bird, Firepoint.position, Firepoint.rotation);
-        StartCoroutine(cooldown());
+        Isfired = true;
+        StartCoroutine(cooldown()); 
     }
     IEnumerator cooldown()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        Isfired = false;
     }
 
 }

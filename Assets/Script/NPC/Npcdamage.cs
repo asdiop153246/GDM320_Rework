@@ -8,33 +8,32 @@ public class Npcdamage : MonoBehaviour
     public int Healthpoint = 3;
     public HPScript hp;
     public GameObject Player;
-    bool immune = false;
+    bool Isimmune = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {        
-        if (collision.tag == "Player" && immune == false)
+        if (collision.tag == "Player" && Isimmune == false)
         {
             getDamage();
-            getImmune();
-            //Destroy(gameObject);
+            getImmune();           
         }
     }
 
     private void getDamage()
     {
-        Debug.Log("I slap your ass again");
+        Debug.Log("Hit");
         hp.Damaged();
     }
 
     private void getImmune()
     {
-        immune = true;
+        Isimmune = true;
         StartCoroutine(Iframe());
     }
     IEnumerator Iframe()
     {
         yield return new WaitForSeconds(3f);
-        immune = false;
+        Isimmune = false;
     }
     public void Takedamaged(int damages)
     {

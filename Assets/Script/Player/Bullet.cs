@@ -19,14 +19,14 @@ public class Bullet : MonoBehaviour
     }
     IEnumerator decay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.3f);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "NPC")
         {
-            Debug.Log("I hit you Indian");
+            Debug.Log("Hit");
             damage = collision.GetComponent<Npcdamage>();
             damage.Takedamaged(damages);
             destroyObj(collision);
