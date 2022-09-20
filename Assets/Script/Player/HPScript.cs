@@ -6,17 +6,9 @@ using UnityEngine.SceneManagement;
 public class HPScript : MonoBehaviour
 {
     public Image Life1, Life2, Life3, Life4, Life5;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void Damaged()
     {   
-        
         HealthScript();
-
     }
     public void HealthScript()
     {
@@ -46,11 +38,6 @@ public class HPScript : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-    public void Update()
-    {
-        
-    }
-
     IEnumerator calmdown()
     {
         yield return new WaitForSeconds(3f);
