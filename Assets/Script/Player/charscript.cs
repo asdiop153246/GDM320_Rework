@@ -8,7 +8,6 @@ public class charscript : MonoBehaviour
 {
     public float jumpforce = 200f;
     public float speed = 20f;
-    float Horizontalmove = 0f;
     public bool Isjump = false;
     bool Isgamestarted = false;
     bool Isplatform = false;
