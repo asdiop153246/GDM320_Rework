@@ -13,28 +13,40 @@ public class TalktoKing : MonoBehaviour
     public GameObject WIPline;
     public GameObject invadedzone;
     
-    // Start is called before the first frame update
    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-
-            Playercam.SetActive(false);
-            NPCcam.SetActive(true);
-            UI.SetActive(true);
-            UI2.SetActive(true);
-            WIPline.SetActive(true);
-            invadedzone.SetActive(true);
+            setCameraToNPC();
+            activeUI(true);
+            activeInvadedzone();
             StartCoroutine(Endframe());
         }
-    }    
+    }
     IEnumerator Endframe()
     {
         yield return new WaitForSeconds(7f);
-
+        setCameraToPlayer();
+        activeUI(false);
+    }
+    private void setCameraToNPC()
+    {
+        Playercam.SetActive(false);
+        NPCcam.SetActive(true);
+    }
+    private void setCameraToPlayer()
+    {
         Playercam.SetActive(true);
         NPCcam.SetActive(false);
-        UI.SetActive(false);
-        UI2.SetActive(false);
+    }
+    private void activeInvadedzone()
+    {
+        WIPline.SetActive(true);
+        invadedzone.SetActive(true);
+    }
+    private void activeUI(bool IsActive)
+    {
+        UI.SetActive(IsActive);
+        UI2.SetActive(IsActive);
     }
 }

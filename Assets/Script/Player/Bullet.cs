@@ -10,8 +10,17 @@ public class Bullet : MonoBehaviour
     public int damages = 1;
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        bulletMovement();
         StartCoroutine(decay());
+    }
+    private void bulletMovement()
+    {
+        rb.velocity = transform.right * speed;
+    }
+    IEnumerator decay()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,19 +29,12 @@ public class Bullet : MonoBehaviour
             Debug.Log("I hit you Indian");
             damage = collision.GetComponent<Npcdamage>();
             damage.Takedamaged(damages);
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            
-
+            destroyObj(collision);
         }
     }
-    IEnumerator decay()
+    private void destroyObj(Collider2D collision)
     {
-        yield return new WaitForSeconds(3f);
+        Destroy(collision.gameObject);
         Destroy(gameObject);
     }
-
-
-    // Update is called once per frame
-
 }

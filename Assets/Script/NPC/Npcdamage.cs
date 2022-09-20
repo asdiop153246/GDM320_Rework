@@ -14,26 +14,28 @@ public class Npcdamage : MonoBehaviour
     {        
         if (collision.tag == "Player" && immune == false)
         {
-            Debug.Log("I slap your ass again");
-            hp.Damaged();
-            immune = true;
-            StartCoroutine(Iframe());
+            getDamage();
+            getImmune();
             //Destroy(gameObject);
         }
     }
+
+    private void getDamage()
+    {
+        Debug.Log("I slap your ass again");
+        hp.Damaged();
+    }
+
+    private void getImmune()
+    {
+        immune = true;
+        StartCoroutine(Iframe());
+    }
     IEnumerator Iframe()
     {
-        
         yield return new WaitForSeconds(3f);
         immune = false;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     public void Takedamaged(int damages)
     {
         if (Healthpoint <= 0)
@@ -42,10 +44,6 @@ public class Npcdamage : MonoBehaviour
         }
         Healthpoint -= damages;
         Debug.Log("NPCHP = "+ Healthpoint);
-        
-    }
-    void Update()
-    {
         
     }
 }
