@@ -22,11 +22,15 @@ public class Climbladder : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        IsClimbing();
+    }
+    private void IsClimbing()
+    {
         if (isclimbing)
         {
             rb.gravityScale = 0;
             rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
-            
+
         }
         else
         {
