@@ -18,7 +18,8 @@ public class TalktoKing : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             setCameraToNPC();
-            activeUI();
+            activeUI(true);
+            activeInvadedzone();
             StartCoroutine(Endframe());
         }
     }
@@ -26,7 +27,7 @@ public class TalktoKing : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         setCameraToPlayer();
-        unactiveUI();
+        activeUI(false);
     }
     private void setCameraToNPC()
     {
@@ -38,16 +39,14 @@ public class TalktoKing : MonoBehaviour
         Playercam.SetActive(true);
         NPCcam.SetActive(false);
     }
-    private void activeUI()
+    private void activeInvadedzone()
     {
-        UI.SetActive(true);
-        UI2.SetActive(true);
         WIPline.SetActive(true);
         invadedzone.SetActive(true);
     }
-    private void unactiveUI()
+    private void activeUI(bool IsActive)
     {
-        UI.SetActive(false);
-        UI2.SetActive(false);
+        UI.SetActive(IsActive);
+        UI2.SetActive(IsActive);
     }
 }
