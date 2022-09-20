@@ -9,7 +9,7 @@ public class Coinsscript : MonoBehaviour
     public TMP_Text coinText;
     public AudioClip coinSound;
     GameObject player;
-    //public GameObject changejob;
+    
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -26,17 +26,7 @@ public class Coinsscript : MonoBehaviour
         }
 
     }
-    private void Update()
-    {
-        //if (coinCount >= 20)
-        //{
-        //    Buymenu();
-        //}
-    }
-    public void Buymenu()
-    {
-        //changejob.SetActive(true);
-    }
+
     public void IncreaseCoin(int NumberofCoin)
     {
         coinCount = coinCount + NumberofCoin;
@@ -46,6 +36,6 @@ public class Coinsscript : MonoBehaviour
     {
         coinCount = coinCount - NumberofCoin;
         coinText.text = coinCount.ToString();
-        //changejob.SetActive(false);
+        
     }
 }
