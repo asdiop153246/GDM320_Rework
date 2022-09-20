@@ -15,10 +15,14 @@ public class NPCtalk : MonoBehaviour
     IEnumerator Speech(TMP_Text speak)
     {
         Talk.SetText("Welcome to Night Village");
-        Talk.gameObject.SetActive(true);
+        setActiveTalk(true);
 
         yield return new WaitForSeconds(3);
 
-        Talk.gameObject.SetActive(false);
+        setActiveTalk(false);
+    }
+    private void setActiveTalk(bool value)
+    {
+        Talk.gameObject.SetActive(value);
     }
 }
