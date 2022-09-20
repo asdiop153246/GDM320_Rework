@@ -16,26 +16,31 @@ public class HPScript : MonoBehaviour
         {
             Life5.gameObject.SetActive(false);
             calmdown();
+            return;
         }
-        else if (Life4.gameObject.activeSelf == true)
+        if (Life4.gameObject.activeSelf == true)
         {
             Life4.gameObject.SetActive(false);
             calmdown();
+            return;
         }
-        else if (Life3.gameObject.activeSelf == true)
+        if (Life3.gameObject.activeSelf == true)
         {
             Life3.gameObject.SetActive(false);
             calmdown();
+            return;
         }
-        else if (Life2.gameObject.activeSelf == true)
+        if (Life2.gameObject.activeSelf == true)
         {
             Life2.gameObject.SetActive(false);
             calmdown();
+            return;
         }
-        else if (Life1.gameObject.activeSelf == true)
+        if (Life1.gameObject.activeSelf == true)
         {
             Life1.gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
         }
     }
     IEnumerator calmdown()
