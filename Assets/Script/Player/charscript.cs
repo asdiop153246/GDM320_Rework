@@ -19,7 +19,7 @@ public class charscript : MonoBehaviour
     AudioSource audioSource;
     SwapCamera camera;
 
-
+    [SerializeField] getInputChecker inputChecker;
 
     // Start is called before the first frame update
     void Start()
