@@ -4,33 +4,24 @@ using UnityEngine;
 
 public class activezone : MonoBehaviour
 {
-    public GameObject zone;
-    public GameObject playercam;
-    public GameObject npccam;
+    public GameObject Zone;
+    public GameObject PlayerCam;
+    public GameObject NpcCam;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            zone.SetActive(true);
-            playercam.SetActive(false);
-            npccam.SetActive(true);
+            Zone.SetActive(true);
+            PlayerCam.SetActive(false);
+            NpcCam.SetActive(true);
             StartCoroutine(Delays());
         }
     }
     IEnumerator Delays()
     {
         yield return new WaitForSeconds(3f);
-        playercam.SetActive(true);
-        npccam.SetActive(false);
+        PlayerCam.SetActive(true);
+        NpcCam.SetActive(false);
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

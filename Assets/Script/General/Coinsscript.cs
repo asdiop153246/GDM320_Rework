@@ -8,11 +8,10 @@ public class Coinsscript : MonoBehaviour
     public int coinCount;
     public TMP_Text coinText;
     public AudioClip coinSound;
-    GameObject player;
-    
+    GameObject Player;
     private void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        Player = GameObject.FindWithTag("Player");
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,6 +35,5 @@ public class Coinsscript : MonoBehaviour
     {
         coinCount = coinCount - NumberofCoin;
         coinText.text = coinCount.ToString();
-        
     }
 }
