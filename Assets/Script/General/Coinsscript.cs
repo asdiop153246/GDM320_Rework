@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Coinsscript : MonoBehaviour
 {
     public int coinCount;
     public TMP_Text coinText;
     public AudioClip coinSound;
+    
     GameObject Player;
     private void Start()
     {
@@ -23,6 +25,10 @@ public class Coinsscript : MonoBehaviour
             Destroy(other.gameObject);
 
         }
+        if (coinCount > 5)
+        {
+          NextScene();
+        }
 
     }
 
@@ -35,5 +41,9 @@ public class Coinsscript : MonoBehaviour
     {
         coinCount = coinCount - NumberofCoin;
         coinText.text = coinCount.ToString();
+    }
+     public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
