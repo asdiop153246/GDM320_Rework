@@ -6,10 +6,9 @@ using UnityEngine.UI;
 
 public class charscript : MonoBehaviour
 {
-    public float jumpforce = 250f;
+    public float jumpforce = 200f;
     public float speed = 20f;
-    float Horizontalmove = 0f;
-    public bool jump = false;
+    public bool Isjump = false;
     bool Isgamestarted = false;
     bool Isplatform = false;
     bool Isladder = false;
@@ -20,7 +19,7 @@ public class charscript : MonoBehaviour
     AudioSource audioSource;
     SwapCamera camera;
 
-
+    [SerializeField] getInputChecker inputChecker;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +51,9 @@ public class charscript : MonoBehaviour
     {
         if ((Isplatform == true) && (Isgamestarted == true))
         {
-            jump = true;
+            Isjump = true;
             Isplatform = false;
+            Jumpreset();
             audioSource.Play();
         }
         else
@@ -69,18 +69,23 @@ public class charscript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        IsJump();
+        //Jumpreset();
         IsFlip();
         IsFire();
     }
 
-    private void IsJump()
+    private void Jumpreset()
     {
-        if (jump == true)
+        if (Isjump == true)
         {
             rigidbody.AddForce(new Vector2(0f, jumpforce));
-            jump = false;
+            StartCoroutine(jumpdelay());       
         }
+    }
+    IEnumerator jumpdelay()
+    {
+        yield return new WaitForSeconds(2f);
+        Isjump = false;
     }
 
     private void IsFlip()
@@ -147,7 +152,11 @@ public class charscript : MonoBehaviour
     }
     public void Jump()
     {
-            rigidbody.AddForce(new Vector2(0f, jumpforce));              
+        if (Isjump == false)
+        {
+            Isjump = true;
+            Jumpreset();
+        }
     }
 }
 
