@@ -9,6 +9,7 @@ public class Coinsscript : MonoBehaviour
     public TMP_Text coinText;
     public AudioClip coinSound;
     GameObject Player;
+    
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
@@ -36,4 +37,5 @@ public class Coinsscript : MonoBehaviour
         coinCount = coinCount - NumberofCoin;
         coinText.text = coinCount.ToString();
     }
+
 }

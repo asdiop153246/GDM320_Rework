@@ -64,28 +64,27 @@ public class charscript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Isplatform = true;
         Isladder = true;
     }
     private void FixedUpdate()
     {
-        //Jumpreset();
         IsFlip();
         IsFire();
     }
 
     private void Jumpreset()
     {
-        if (Isjump == true)
-        {
-            rigidbody.AddForce(new Vector2(0f, jumpforce));
+        rigidbody.AddForce(new Vector2(0f, jumpforce));
+        if (Isjump == true) 
+        {        
             StartCoroutine(jumpdelay());       
         }
     }
     IEnumerator jumpdelay()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         Isjump = false;
+        Isplatform = true;
     }
 
     private void IsFlip()
