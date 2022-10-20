@@ -2,20 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class getInputChecker
+public abstract class getInputChecker : MonoBehaviour
 {
-    public static bool IsJumpInput()
-    {
-        return Input.GetKeyDown(KeyCode.Space);
-    } 
+    public abstract bool IsJumpInput();
 
-    public static bool IsPauseInput()
-    {
-        return Input.GetKeyDown(KeyCode.P);
-    }
 
-    public static bool IsAttackInput()
-    {
-        return Input.GetButtonDown("Fire1");
-    }
+    public abstract bool IsPauseInput();
+
+
+    public abstract bool IsAttackInput();
+   
+
+
 }
